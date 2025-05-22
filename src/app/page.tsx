@@ -181,7 +181,14 @@ export default function RedbubbleReadyPage() {
               />
               {artworkPreview && (
                 <div className="mt-4 border border-border rounded-md p-2 aspect-square relative overflow-hidden bg-muted/50">
-                   <Image src={artworkPreview} alt="Artwork Preview" layout="fill" objectFit="contain" data-ai-hint="artwork abstract" />
+                   <Image 
+                     src={artworkPreview} 
+                     alt="Artwork Preview" 
+                     fill 
+                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
+                     style={{ objectFit: 'contain' }} 
+                     data-ai-hint="artwork abstract" 
+                   />
                 </div>
               )}
             </CardContent>
@@ -217,7 +224,7 @@ export default function RedbubbleReadyPage() {
                       <FormItem>
                         <FormLabel className="text-base">Title</FormLabel>
                         <FormControl>
-                          <Input placeholder="e.g., Mystic Forest Landscape" {...field} className="text-base" />
+                          <Input placeholder="e.g., Mystic Forest Landscape" {...field} className="text-base" type="text"/>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
