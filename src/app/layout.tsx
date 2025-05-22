@@ -1,21 +1,21 @@
 import type {Metadata} from 'next';
-import { Geist, Geist_Mono } from 'next/font/google'; // Corrected import name
+import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { Toaster } from "@/components/ui/toaster"; // Added Toaster import
+import { Toaster } from "@/components/ui/toaster";
 
-const geistSans = Geist({ // Corrected variable name
+const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({ // Corrected variable name
+const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: 'Redbubble Ready',
-  description: 'Generate optimized metadata for your Redbubble artwork.',
+  title: 'AI Artwork Metadata Generator',
+  description: 'Upload your artwork to get Redbubble-optimized titles, tags, descriptions, and media categories in seconds.',
 };
 
 export default function RootLayout({
