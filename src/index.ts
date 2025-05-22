@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import type { Context } from 'hono';
-import { handle } from 'hono/cloudflare-workers';
+import type { ExecutionContext } from '@cloudflare/workers-types';
 
 // Define environment interface
 interface Env {
@@ -31,10 +31,10 @@ export default {
   async fetch(
     request: Request,
     env: Env,
-    ctx: { waitUntil: (promise: Promise<any>) => void }
+    ctx: ExecutionContext
   ): Promise<Response> {
     try {
-      return await handle(app, request);
+      return app.fetch(request);
     } catch (error) {
       console.error('Unhandled error:', error);
       return new Response('Internal Server Error', { status: 500 });
