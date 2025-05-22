@@ -1,16 +1,43 @@
 import { Hono } from 'hono';
-import { handle } from '@hono/node-server/cloudflare-workers';
+import type { Context } from 'hono';
+import { handle } from 'hono/cloudflare-workers';
 
-const app = new Hono();
+// Define environment interface
+interface Env {
+  NODE_ENV?: string;
+}
 
-app.get('/', (c) => {
+const app = new Hono<{ Bindings: Env }>();
+
+// Health check endpoint
+app.get('/', (c: Context) => {
   return c.json({
-    message: 'Hello from Redbubble Ready Worker!'
+    status: 'ok',
+    message: 'Hello from Redbubble Ready Worker!',
+    timestamp: new Date().toISOString()
   });
 });
 
+// Error handling middleware
+app.onError((err: Error, c: Context) => {
+  console.error(`[Error]: ${err.message}`);
+  return c.json({
+    status: 'error',
+    message: 'Internal Server Error'
+  }, 500);
+});
+
 export default {
-  async fetch(request: Request, env: any, ctx: any) {
-    return handle(app, request);
+  async fetch(
+    request: Request,
+    env: Env,
+    ctx: { waitUntil: (promise: Promise<any>) => void }
+  ): Promise<Response> {
+    try {
+      return await handle(app, request);
+    } catch (error) {
+      console.error('Unhandled error:', error);
+      return new Response('Internal Server Error', { status: 500 });
+    }
   },
 };
