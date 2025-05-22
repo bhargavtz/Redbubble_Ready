@@ -1,0 +1,3 @@
+name = "redbubble-ready"
+main = "src/app/page.tsx" # or the path to your Worker entry file
+compatibility_date = "2025-05-22"
