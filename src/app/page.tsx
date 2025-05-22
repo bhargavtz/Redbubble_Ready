@@ -50,6 +50,11 @@ export default function RedbubbleReadyPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { toast } = useToast();
+  const [currentYear, setCurrentYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   const form = useForm<MetadataFormData>({
     resolver: zodResolver(metadataFormSchema),
@@ -313,7 +318,9 @@ export default function RedbubbleReadyPage() {
         </div>
       </main>
       <footer className="text-center py-6 mt-8 border-t border-border">
-        <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Redbubble Ready. Powered by AI.</p>
+        <p className="text-sm text-muted-foreground">
+          {currentYear !== null ? `© ${currentYear} Redbubble Ready. Powered by AI.` : 'Redbubble Ready. Powered by AI.'}
+        </p>
       </footer>
     </div>
   );
