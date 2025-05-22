@@ -1,3 +1,8 @@
 name = "redbubble-ready"
 main = "src/app/page.tsx" # or the path to your Worker entry file
 compatibility_date = "2025-05-22"
+# wrangler.toml (wrangler v3.88.0^)
+[observability.logs]
+enabled = true
+
+
