@@ -1,12 +1,13 @@
 {
   "name": "nextn",
   "version": "0.1.0",
-  "private": true,  "scripts": {
-    "dev": "wrangler dev src/index.ts",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
-    "build": "wrangler deploy",
-    "start": "wrangler dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"
   },
@@ -61,9 +62,11 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@vercel/node": "^5.1.16",
     "genkit-cli": "^1.8.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.16.1"
   }
 }

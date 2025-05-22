@@ -1,7 +1,6 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -17,17 +16,10 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
-    unoptimized: true,
-  },
-  output: 'export',
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'https://redbubble-ready.bhargav05.workers.dev/:path*',
-      },
-    ]
-  },
+    unoptimized: true,  },
+  output: 'standalone',
+  distDir: '.next',
+  generateBuildId: () => 'build'
 };
 
 export default nextConfig;
