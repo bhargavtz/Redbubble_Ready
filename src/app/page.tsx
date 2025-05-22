@@ -175,7 +175,7 @@ export default function RedbubbleReadyPage() {
       <header className="text-center mb-10 w-full max-w-4xl">
         <h1 className="text-4xl sm:text-5xl font-bold text-primary flex items-center justify-center">
           <Sparkles className="mr-3 h-8 w-8 sm:h-10 sm:w-10" />
-          AI Artwork Metadata Generator
+          Redbubble Ready
         </h1>
         <p className="text-muted-foreground mt-3 text-lg">
           Upload your artwork to get Redbubble-optimized titles, tags, descriptions, and media categories in seconds.

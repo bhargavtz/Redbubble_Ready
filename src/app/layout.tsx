@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'AI Artwork Metadata Generator',
+  title: 'Redbubble Ready',
   description: 'Upload your artwork to get Redbubble-optimized titles, tags, descriptions, and media categories in seconds.',
 };
 
