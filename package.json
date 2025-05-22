@@ -1,13 +1,12 @@
 {
   "name": "nextn",
   "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack -p 9002",
+  "private": true,  "scripts": {
+    "dev": "wrangler dev src/index.ts",
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
-    "build": "next build",
-    "start": "next start",
+    "build": "wrangler deploy",
+    "start": "wrangler dev",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"
   },

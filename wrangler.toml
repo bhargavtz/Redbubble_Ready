@@ -1,9 +1,6 @@
 name = "redbubble-ready"
-main = "src/app/page.tsx"
+main = "src/index.ts"
 compatibility_date = "2025-05-22"
-
-[site]
-bucket = "./out"
 
 [build]
 command = "npm run build"
