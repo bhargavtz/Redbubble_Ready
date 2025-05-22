@@ -95,9 +95,19 @@ export default function RedbubbleReadyPage() {
     }
     setIsLoading(true);
     setError(null);
-    try {
-      const input: GenerateRedbubbleMetadataInput = { artworkDataUri: artworkPreview };
-      const result = await generateRedbubbleMetadata(input);
+    try {      const response = await fetch('/api/generate-metadata', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ artworkDataUri: artworkPreview }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to generate metadata');
+      }
+
+      const { data: result } = await response.json();
       
       form.reset({
         title: result.title,
